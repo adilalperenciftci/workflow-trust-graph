@@ -1,0 +1,8 @@
+on: pull_request_target
+permissions:
+  made-up-scope: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event.pull_request.title }}"

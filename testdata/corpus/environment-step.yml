@@ -1,0 +1,14 @@
+on: pull_request_target
+permissions:
+  contents: write
+env:
+  TITLE: fixed
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      TITLE: fixed
+    steps:
+      - env:
+          TITLE: ${{ github.event.pull_request.body }}
+        run: echo checked

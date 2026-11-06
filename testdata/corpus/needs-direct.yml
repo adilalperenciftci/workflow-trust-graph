@@ -1,0 +1,15 @@
+on: pull_request_target
+jobs:
+  producer:
+    runs-on: ubuntu-latest
+    outputs:
+      field: ${{ github.event.pull_request.title }}
+    steps:
+      - run: echo produced
+  consumer:
+    needs: producer
+    permissions:
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ needs.producer.outputs.field }}"
